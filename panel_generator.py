@@ -117,17 +117,17 @@ def process_pair(df, i, m, ld_matrix, r2):
             #ld_info = ld_matrix[(ld_matrix["ID_A"] == i) &(ld_matrix["ID_B"] == m) ].PHASED_R2.values[0]
         except:
             try:
-            ld_info = float(ld_matrix.loc[(ld_matrix["ID_A"] == m) & (ld_matrix["ID_B"] == i), "PHASED_R2"].values[0] ) 
-            #ld_info = ld_matrix[(ld_matrix["ID_A"] == m) &(ld_matrix["ID_B"] == i) ].PHASED_R2.values[0]
+                ld_info = float(ld_matrix.loc[(ld_matrix["ID_A"] == m) & (ld_matrix["ID_B"] == i), "PHASED_R2"].values[0] ) 
+                #ld_info = ld_matrix[(ld_matrix["ID_A"] == m) &(ld_matrix["ID_B"] == i) ].PHASED_R2.values[0]
             except: 
-            #### add code if empty from LD matrix drop that SNP
-            if ld_matrix[(ld_matrix["ID_A"] == m)  ].empty: 
-                SNP_dict["NOTE"] =  (f"{m} is missing from the LD matrix - Keeping {i} " )
-                result = i
-            
-            if ld_matrix[(ld_matrix["ID_A"] == i) ].empty: 
-                SNP_dict["NOTE"] =  (f"{i} is missing from the LD matrix - Keeping {m} " )
-                result = m
+                #### add code if empty from LD matrix drop that SNP
+                if ld_matrix[(ld_matrix["ID_A"] == m)  ].empty: 
+                    SNP_dict["NOTE"] =  (f"{m} is missing from the LD matrix - Keeping {i} " )
+                    result = i
+                
+                if ld_matrix[(ld_matrix["ID_A"] == i) ].empty: 
+                    SNP_dict["NOTE"] =  (f"{i} is missing from the LD matrix - Keeping {m} " )
+                    result = m
 
 
 
