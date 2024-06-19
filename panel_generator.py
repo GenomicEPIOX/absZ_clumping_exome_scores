@@ -129,10 +129,7 @@ def process_pair(df, i, m, ld_matrix, r2):
                     SNP_dict["NOTE"] =  (f"{i} is missing from the LD matrix - Keeping {m} " )
                     result = m
 
-
-
-
-        SNP_dict["R2"] = ld_info\
+        SNP_dict["R2"] = ld_info
     
         if ld_info >= r2:
             i_absz = subset_i.abs_Z.values[0]
