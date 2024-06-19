@@ -123,11 +123,19 @@ def process_pair(df, i, m, ld_matrix, r2):
                 #### add code if empty from LD matrix drop that SNP
                 if ld_matrix[(ld_matrix["ID_A"] == m)  ].empty: 
                     SNP_dict["NOTE"] =  (f"{m} is missing from the LD matrix - Keeping {i} " )
+                    SNP_dict["FLAG"] = "failed" 
                     result = i
+                    SNP_DF = pd.DataFrame([SNP_dict])
+                    temp_df = pd.concat([temp_df , SNP_DF],  ignore_index=True)
+                    return temp_df, result
                 
                 if ld_matrix[(ld_matrix["ID_A"] == i) ].empty: 
                     SNP_dict["NOTE"] =  (f"{i} is missing from the LD matrix - Keeping {m} " )
+                    SNP_dict["FLAG"] = "failed" 
                     result = m
+                    SNP_DF = pd.DataFrame([SNP_dict])
+                    temp_df = pd.concat([temp_df , SNP_DF],  ignore_index=True)
+                    return temp_df, result
 
         SNP_dict["R2"] = ld_info
     
