@@ -79,7 +79,6 @@ def make_temp_file(Dhindsa_excel_file, protein, variant_type, missing_variants) 
 def process_pair(df, i, m, ld_matrix, r2):
     temp_df = pd.DataFrame(columns=["SNP1" , "SNP2" , "DISTANCE","R2", "NOTE", "FLAG" ]) 
     SNP_dict = { "SNP1" : i , "SNP2" : m }
-    print (SNP_dict) 
     result = None
     if i == m : 
         SNP_dict["NOTE"] = "Same SNP" 
