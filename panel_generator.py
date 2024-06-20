@@ -159,7 +159,7 @@ def process_pair(df, i, m, ld_matrix, r2):
     return temp_df, result
 
 def process_chromosome(chromosome, ld_file, df, r2): 
-    if chromosome == 23 : 
+    if chromosome == "23" : 
         chromosome = "X"
     current_chr_df = df[df["CHR"] == chromosome] 
     chr_key = "chr" + str(chromosome) 
