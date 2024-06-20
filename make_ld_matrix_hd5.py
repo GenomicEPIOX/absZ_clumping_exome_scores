@@ -19,15 +19,17 @@ def main(input_name, output):
         #temp["key"] = temp.ID_A + "_" + temp.ID_B 
         key_name = "chr" + str(i) 
         temp.to_hdf(output, key=key_name, mode='a')
-    temp = ld_matrix[ld_matrix["CHR"] == "Y" ]
-    #temp["key"] = te mp.ID_A + "_" + temp.ID_B 
-    key_name = "chrY" 
-    temp.to_hdf(output, key=key_name, mode='a')
+    # temp = ld_matrix[ld_matrix["CHR"] == "Y" ]
+    # #temp["key"] = te mp.ID_A + "_" + temp.ID_B 
+    # key_name = "chrY" 
+    # temp.to_hdf(output, key=key_name, mode='a')
     temp = ld_matrix[ld_matrix["CHR"] == "X" ]
-    #temp["key"] = temp.ID_A + "_" + temp.ID_B 
-    key_name = "chrX" 
-    temp.to_hdf(output, key=key_name, mode='a')
+    temp['CHR'] = temp['CHR'].replace({'X': 23 })
 
+    #temp["key"] = temp.ID_A + "_" + temp.ID_B 
+    key_name = "chr23" 
+    temp.to_hdf(output, key=key_name, mode='a')
+    
 
 
 if __name__ == '__main__':

@@ -159,8 +159,6 @@ def process_pair(df, i, m, ld_matrix, r2):
     return temp_df, result
 
 def process_chromosome(chromosome, ld_file, df, r2): 
-    if chromosome == "23" : 
-        chromosome = "X"
     current_chr_df = df[df["CHR"] == chromosome] 
     chr_key = "chr" + str(chromosome) 
     ld_matrix = pd.read_hdf(ld_file, key=chr_key)
@@ -192,7 +190,7 @@ def process_protein(protein_name, r2,ld_file, variant_type, filter_MHC, file_pat
         print (f"{protein_name} contains no {variant_type} hits" ) 
         return None
     PROTEIN_DF = PROTEIN_DF.sort_values(["CHR", "BP"]) 
-    PROTEIN_DF['CHR'] = PROTEIN_DF['CHR'].replace({'chr23': 'chrX', 23 : "X" })
+    #PROTEIN_DF['CHR'] = PROTEIN_DF['CHR'].replace({'chr23': 'chrX', 23 : "X" })
     current_chr = PROTEIN_DF.CHR.unique() 
     results = {}
     main_log = pd.DataFrame(columns=["SNP1" , "SNP2" , "DISTANCE","R2", "NOTE", "FLAG" ]) 
