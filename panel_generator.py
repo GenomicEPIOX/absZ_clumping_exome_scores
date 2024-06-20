@@ -192,6 +192,7 @@ def process_protein(protein_name, r2,ld_file, variant_type, filter_MHC, file_pat
     PROTEIN_DF = PROTEIN_DF.sort_values(["CHR", "BP"]) 
     #PROTEIN_DF['CHR'] = PROTEIN_DF['CHR'].replace({'chr23': 'chrX', 23 : "X" })
     current_chr = PROTEIN_DF.CHR.unique() 
+    print (current_chr)
     results = {}
     main_log = pd.DataFrame(columns=["SNP1" , "SNP2" , "DISTANCE","R2", "NOTE", "FLAG" ]) 
     for chromosome in current_chr:
