@@ -13,6 +13,7 @@ def check_arg(args=None):
 
 def main(input_name, output): 
     ld_matrix = pd.read_csv(input_file, sep="\t", low_memory=False)
+    print (ld_matrix)
     ld_matrix.rename(columns={"#CHROM_A" : "CHR"} , inplace=True)
     for i in range(1,23): 
         temp = ld_matrix[ld_matrix["CHR"] == str(i) ]
